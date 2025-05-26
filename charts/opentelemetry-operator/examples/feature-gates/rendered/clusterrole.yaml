@@ -4,7 +4,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
-    helm.sh/chart: opentelemetry-operator-0.88.7
+    helm.sh/chart: opentelemetry-operator-0.88.8
     app.kubernetes.io/name: opentelemetry-operator
     app.kubernetes.io/version: "0.124.0"
     app.kubernetes.io/managed-by: Helm
@@ -263,13 +263,19 @@ rules:
       - update
       - patch
       - delete
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - subjectaccessreviews
+    verbs:
+      - create
 ---
 # Source: opentelemetry-operator/templates/clusterrole.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
-    helm.sh/chart: opentelemetry-operator-0.88.7
+    helm.sh/chart: opentelemetry-operator-0.88.8
     app.kubernetes.io/name: opentelemetry-operator
     app.kubernetes.io/version: "0.124.0"
     app.kubernetes.io/managed-by: Helm
@@ -288,7 +294,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
-    helm.sh/chart: opentelemetry-operator-0.88.7
+    helm.sh/chart: opentelemetry-operator-0.88.8
     app.kubernetes.io/name: opentelemetry-operator
     app.kubernetes.io/version: "0.124.0"
     app.kubernetes.io/managed-by: Helm
@@ -301,11 +307,5 @@ rules:
       - authentication.k8s.io
     resources:
       - tokenreviews
-    verbs:
-      - create
-  - apiGroups:
-      - authorization.k8s.io
-    resources:
-      - subjectaccessreviews
     verbs:
       - create
